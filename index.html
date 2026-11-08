@@ -100,15 +100,6 @@
   .send-wa{width:100%;justify-content:center;margin-top:16px;font-size:1.08rem}
   .err{color:var(--danger);font-size:.9rem;font-weight:600;min-height:1.2em;margin-top:8px}
 
-  /* ---------- GitHub box ---------- */
-  .gh{background:#14231a;color:#e9f7ee;border-radius:16px;padding:22px}
-  .gh h2{color:#fff}
-  .gh p{color:#bfe6cc}
-  .gh ol{margin:10px 0 16px;padding-left:22px;color:#e9f7ee}
-  .gh code{background:rgba(255,255,255,.12);padding:1px 7px;border-radius:6px;font-size:.9em}
-  .btn-dl{background:#fff;color:#14231a}
-  .btn-repo{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
-
   footer{padding:34px 0 90px;text-align:center;color:var(--muted);font-size:.92rem}
   footer b{color:var(--ink)}
 
@@ -179,24 +170,6 @@
       <p class="err" id="formErr"></p>
       <button class="btn btn-wa send-wa" id="sendOrder" type="button">WhatsApp Par Order Bhejein — 0335-3810336</button>
       <p class="note">Order WhatsApp par jayega — dukaan wala confirm karke aap ke number par tasdeeq bhejega. Delivery charges WhatsApp par confirm honge.</p>
-    </div>
-  </section>
-
-  <section id="github">
-    <div class="gh">
-      <h2>Ye App GitHub Pages Ke Liye Tayyar Hai</h2>
-      <p>Ye wahi live shop hai — aik hi <code>index.html</code> file aur saath <code>assets</code> folder (products ki photos). GitHub par lagane ke steps:</p>
-      <ol>
-        <li>Neeche wale button se <code>index.html</code> download karein.</li>
-        <li>GitHub par naya repository banayein (masalan <code>shakir-bhai-gazak-walay</code>).</li>
-        <li><code>index.html</code> aur <code>assets</code> folder — dono upload karein.</li>
-        <li>Repository ki <b>Settings → Pages</b> mein ja kar <b>main</b> branch select karein — kuch minute mein aap ko live link mil jayega jo aap har customer ko bhej sakte hain.</li>
-      </ol>
-      <div class="hero-actions">
-        <button class="btn btn-dl" id="dlBtn" type="button">⬇ index.html Download Karein</button>
-        <a class="btn btn-repo" href="https://github.com/new" target="_blank" rel="noopener">GitHub Par Naya Repo Banayein</a>
-      </div>
-      <p class="note" style="color:#bfe6cc">Note: photos <code>assets</code> folder mein hain — GitHub par <code>index.html</code> ke saath poora folder bhi upload karna hai, warna photos nazar nahi aayengi.</p>
     </div>
   </section>
 
@@ -344,17 +317,6 @@
     lines.push("Address: " + address);
     if(note) lines.push("Note: " + note);
     window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
-  });
-
-  byId("dlBtn").addEventListener("click", function(){
-    var html = "<!doctype html>\n" + document.documentElement.outerHTML;
-    var blob = new Blob([html], { type: "text/html" });
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "index.html";
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 800);
   });
 
   renderProducts();
